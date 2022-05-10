@@ -1,4 +1,4 @@
-package com.kakaopaysec.api.domain.user.presentation;
+package com.kakaopaysec.api.domain.user.interfaces;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
