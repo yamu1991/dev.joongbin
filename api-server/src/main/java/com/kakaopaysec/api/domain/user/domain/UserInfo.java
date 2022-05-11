@@ -1,8 +1,10 @@
 package com.kakaopaysec.api.domain.user.domain;
 
+import com.kakaopaysec.api.global.util.CustomMapper;
 import lombok.*;
 
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 
 public class UserInfo {
 
@@ -17,16 +19,13 @@ public class UserInfo {
         private final Date joinDate;
 
         public static List<Main> of(List<User> userList) {
-            List<Main> mainList = new ArrayList<>();
-            for (User user : userList) {
-                mainList.add(Main.builder()
-                        .id(user.getId())
-                        .name(user.getName())
-                        .age(user.getAge())
-                        .joinDate(user.getJoinDate())
-                        .build());
-            }
-            return mainList;
+            return CustomMapper.listMapper(userList,
+                    user -> Main.builder()
+                            .id(user.getId())
+                            .name(user.getName())
+                            .age(user.getAge())
+                            .joinDate(user.getJoinDate())
+                            .build());
         }
     }
 }
