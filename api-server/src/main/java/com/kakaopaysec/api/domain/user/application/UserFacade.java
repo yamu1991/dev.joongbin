@@ -1,9 +1,10 @@
 package com.kakaopaysec.api.domain.user.application;
 
-import com.kakaopaysec.api.domain.user.domain.UserCommand;
-import com.kakaopaysec.api.domain.user.domain.UserService;
+import com.kakaopaysec.api.domain.user.domain.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -13,5 +14,9 @@ public class UserFacade {
 
     public Long registerUser(UserCommand.RegisterUserRequest request) {
         return userService.registerUser(request);
+    }
+
+    public List<UserInfo.Main> getUserList() {
+        return userService.getUserList();
     }
 }

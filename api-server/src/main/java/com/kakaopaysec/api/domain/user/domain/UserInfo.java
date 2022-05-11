@@ -14,7 +14,7 @@ public class UserInfo {
         private final Long id;
         private final String name;
         private final Integer age;
-        private final Date joinData;
+        private final Date joinDate;
 
         public static List<Main> of(List<User> userList) {
             List<Main> mainList = new ArrayList<>();
@@ -23,7 +23,7 @@ public class UserInfo {
                         .id(user.getId())
                         .name(user.getName())
                         .age(user.getAge())
-                        .joinData(user.getJoinDate())
+                        .joinDate(user.getJoinDate())
                         .build());
             }
             return mainList;
