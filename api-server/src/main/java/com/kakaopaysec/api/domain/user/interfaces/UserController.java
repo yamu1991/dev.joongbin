@@ -24,4 +24,12 @@ public class UserController {
         var response = new UserDto.RegisterUserResponse(userId);
         return CommonResponse.success(response, "유저 추가 완료");
     }
+
+    // 유저 리스트 조회 API
+    @GetMapping("list")
+    public CommonResponse getUserList() {
+        var userList = userFacade.getUserList();
+        var response = UserDto.Main.of(userList);
+        return CommonResponse.success(response, "유저 목록 조회 성공");
+    }
 }
