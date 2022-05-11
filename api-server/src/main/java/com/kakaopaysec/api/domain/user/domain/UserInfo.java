@@ -9,7 +9,7 @@ public class UserInfo {
     @Getter
     @Builder
     @ToString
-    // response
+    // application으로 return하기 위한 객체
     public static class Main {
         private final Long id;
         private final String name;

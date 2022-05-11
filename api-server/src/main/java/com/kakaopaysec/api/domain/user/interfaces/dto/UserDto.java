@@ -19,4 +19,11 @@ public class UserDto {
                     .build();
         }
     }
+
+    @Getter
+    @ToString
+    @AllArgsConstructor
+    public static class RegisterUserResponse {
+        private Long userId;
+    }
 }

@@ -21,6 +21,7 @@ public class UserController {
             @RequestBody @Valid UserDto.RegisterUserRequest request
     ) {
         var userId = userFacade.registerUser(request.toCommand());
-        return CommonResponse.success(userId, "유저 추가 완료");
+        var response = new UserDto.RegisterUserResponse(userId);
+        return CommonResponse.success(response, "유저 추가 완료");
     }
 }
