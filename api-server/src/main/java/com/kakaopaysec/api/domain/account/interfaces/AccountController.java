@@ -6,12 +6,23 @@ import com.kakaopaysec.api.global.response.http.CommonResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("account")
 @RequiredArgsConstructor
 public class AccountController {
 
     private final AccountFacade accountFacade;
+
+    @PostMapping
+    public CommonResponse registerAccount(
+            @RequestBody @Valid AccountDto.RegisterAccountRequest request
+    ) {
+        var accountId = accountFacade.registerAccount(request.toCommand());
+        var response = new AccountDto.RegisterAccountResponse(accountId);
+        return CommonResponse.success(response);
+    }
 
     @GetMapping
     public CommonResponse getAccountList() {

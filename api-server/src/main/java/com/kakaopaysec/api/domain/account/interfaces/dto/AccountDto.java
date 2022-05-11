@@ -22,6 +22,12 @@ public class AccountDto {
     }
 
     @Getter
+    @AllArgsConstructor
+    public static class RegisterAccountResponse {
+        private final String accountId;
+    }
+
+    @Getter
     @Builder
     @ToString
     public static class Main {
