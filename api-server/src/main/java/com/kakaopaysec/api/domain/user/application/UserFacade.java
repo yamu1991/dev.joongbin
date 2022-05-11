@@ -1,4 +1,7 @@
 package com.kakaopaysec.api.domain.user.application;
 
-public interface UserFacade {
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserFacade {
 }
