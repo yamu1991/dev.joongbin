@@ -19,4 +19,7 @@ public class CommonResponse<T> {
                 .build();
     }
 
+    public static <T> CommonResponse<T> success(T data) {
+        return success(data, null);
+    }
 }

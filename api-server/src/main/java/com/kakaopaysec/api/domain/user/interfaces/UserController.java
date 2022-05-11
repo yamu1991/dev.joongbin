@@ -1,9 +1,26 @@
 package com.kakaopaysec.api.domain.user.interfaces;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.kakaopaysec.api.domain.user.application.UserFacade;
+import com.kakaopaysec.api.domain.user.interfaces.dto.UserDto;
+import com.kakaopaysec.api.global.response.http.CommonResponse;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("user")
+@RequiredArgsConstructor
 public class UserController {
+
+    private final UserFacade userFacade;
+
+    // 유저 추가 API
+    @PostMapping
+    public CommonResponse registerUser(
+            @RequestBody @Valid UserDto.RegisterUserRequest request
+    ) {
+        var userId = userFacade.registerUser(request.toCommand());
+        return CommonResponse.success(userId, "유저 추가 완료");
+    }
 }
