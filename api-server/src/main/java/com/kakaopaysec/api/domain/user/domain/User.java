@@ -1,9 +1,10 @@
 package com.kakaopaysec.api.domain.user.domain;
 
+import com.kakaopaysec.api.domain.account.domain.Account;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.*;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -23,6 +24,9 @@ public class User {
 
     @Column
     private Date joinDate;
+
+    @OneToMany(mappedBy = "user")
+    private List<Account> accountList = new ArrayList<>();
 
     @Builder
     public User(String name, Integer age) {
