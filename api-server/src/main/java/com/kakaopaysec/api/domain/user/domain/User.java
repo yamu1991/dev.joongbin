@@ -1,4 +1,4 @@
-package com.kakaopaysec.api.domain.user.domain.entity;
+package com.kakaopaysec.api.domain.user.domain;
 
 import lombok.*;
 
