@@ -1,5 +1,6 @@
 package com.kakaopaysec.api.domain.account.interfaces.dto;
 
+import com.kakaopaysec.api.domain.account.domain.AccountCommand;
 import com.kakaopaysec.api.domain.account.domain.AccountInfo;
 import com.kakaopaysec.api.global.util.CustomMapper;
 import lombok.*;
@@ -7,6 +8,18 @@ import lombok.*;
 import java.util.List;
 
 public class AccountDto {
+
+    @Getter
+    @Setter
+    public static class RegisterAccountRequest {
+        private Long userId;
+
+        public AccountCommand.RegisterAccountRequest toCommand() {
+            return AccountCommand.RegisterAccountRequest.builder()
+                    .userId(userId)
+                    .build();
+        }
+    }
 
     @Getter
     @Builder
@@ -23,5 +36,4 @@ public class AccountDto {
                             .build());
         }
     }
-
 }

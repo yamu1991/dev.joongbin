@@ -7,6 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum ErrorCodes {
 
+    USER_NOT_FOUND(404, "API-404-1", "해당 유저를 찾을 수 없습니다"),
     INTERNAL_SERVER_ERROR(500, "API-500-1", "서버 오류 발생");
 
     // HttpStatus를 나타내는 필드

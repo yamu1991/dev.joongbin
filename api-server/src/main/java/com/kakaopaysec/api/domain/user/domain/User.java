@@ -22,7 +22,7 @@ public class User {
     @Column
     private Integer age;
 
-    @Column
+    @Column(columnDefinition = "DATE")
     private Date joinDate;
 
     @OneToMany(mappedBy = "user")
