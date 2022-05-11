@@ -1,7 +1,10 @@
 package com.kakaopaysec.api.domain.user.domain;
 
 import com.kakaopaysec.api.domain.account.domain.Account;
+import com.kakaopaysec.api.global.exception.errors.BadRequestException;
 import lombok.*;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
 import java.util.*;
@@ -30,6 +33,9 @@ public class User {
 
     @Builder
     public User(String name, Integer age) {
+        if (!StringUtils.hasLength(name)) throw new BadRequestException("name은 필수값입니다");
+        if (ObjectUtils.isEmpty(age)) throw new BadRequestException("age는 필수값입니다");
+
         this.name = name;
         this.age = age;
         this.joinDate = new Date();

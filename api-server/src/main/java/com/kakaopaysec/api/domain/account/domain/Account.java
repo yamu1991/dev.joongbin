@@ -1,7 +1,9 @@
 package com.kakaopaysec.api.domain.account.domain;
 
 import com.kakaopaysec.api.domain.user.domain.User;
+import com.kakaopaysec.api.global.exception.errors.BadRequestException;
 import lombok.*;
+import org.springframework.util.ObjectUtils;
 
 import javax.persistence.*;
 
@@ -22,9 +24,12 @@ public class Account {
     private User user;
 
     @Builder
-    public Account(String id, Long userId, User user) {
+    public Account(String id, User user) {
+        // Id같은 경우 추후 고려
+//        if (!StringUtils.hasLength(id)) throw new BadRequestException("id는 필수값입니다");
+        if (ObjectUtils.isEmpty(user)) throw new BadRequestException("userId는 필수값입니다");
+
         this.id = id;
-        this.userId = userId;
         this.user = user;
     }
 
