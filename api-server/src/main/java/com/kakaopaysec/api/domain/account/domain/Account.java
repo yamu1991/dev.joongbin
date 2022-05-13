@@ -1,11 +1,14 @@
 package com.kakaopaysec.api.domain.account.domain;
 
+import com.kakaopaysec.api.domain.account.domain.history.AccountHistory;
 import com.kakaopaysec.api.domain.user.domain.User;
 import com.kakaopaysec.api.global.exception.errors.BadRequestException;
 import lombok.*;
 import org.springframework.util.ObjectUtils;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -24,10 +27,12 @@ public class Account {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OneToMany(mappedBy = "account")
+    private List<AccountHistory> accountHistoryList = new ArrayList<>();
+
     @Builder
     public Account(Long id, User user) {
         if (ObjectUtils.isEmpty(id)) throw new BadRequestException("id는 필수값입니다");
-        if (ObjectUtils.isEmpty(user)) throw new BadRequestException("userId는 필수값입니다");
 
         this.id = id;
         this.user = user;
