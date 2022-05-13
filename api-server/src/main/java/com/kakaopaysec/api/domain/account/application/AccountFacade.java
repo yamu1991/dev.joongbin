@@ -23,4 +23,8 @@ public class AccountFacade {
     public Long registerAccountHistory(AccountCommand.RegisterAccountHistoryRequest request) {
         return accountService.registerAccountHistory(request);
     }
+
+    public List<AccountInfo.HistoryInfo> getAccountHistoryList() {
+        return accountService.getAccountHistoryList();
+    }
 }
