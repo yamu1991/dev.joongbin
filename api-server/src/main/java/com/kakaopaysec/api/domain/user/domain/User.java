@@ -32,7 +32,7 @@ public class User {
     private List<Account> accountList = new ArrayList<>();
 
     @Builder
-    public User(String name, Integer age) {
+    public User(Long id, String name, Integer age) {
         if (!StringUtils.hasLength(name)) throw new BadRequestException("name은 필수값입니다");
         if (ObjectUtils.isEmpty(age)) throw new BadRequestException("age는 필수값입니다");
 

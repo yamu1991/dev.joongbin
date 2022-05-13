@@ -11,7 +11,7 @@ public class AccountInfo {
     @Getter
     @Builder
     public static class Main {
-        private String accountId;
+        private Long accountId;
         private Long userId;
 
         public static List<Main> of(List<Account> accountList) {

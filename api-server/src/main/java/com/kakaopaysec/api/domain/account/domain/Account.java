@@ -13,8 +13,9 @@ import javax.persistence.*;
 public class Account {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private String id;
+    private Long id;
 
     @Column(name = "user_id", insertable = false, updatable = false)
     private Long userId;
@@ -24,9 +25,8 @@ public class Account {
     private User user;
 
     @Builder
-    public Account(String id, User user) {
-        // Id같은 경우 추후 고려
-//        if (!StringUtils.hasLength(id)) throw new BadRequestException("id는 필수값입니다");
+    public Account(Long id, User user) {
+        if (ObjectUtils.isEmpty(id)) throw new BadRequestException("id는 필수값입니다");
         if (ObjectUtils.isEmpty(user)) throw new BadRequestException("userId는 필수값입니다");
 
         this.id = id;

@@ -24,7 +24,7 @@ public class AccountDto {
     @Getter
     @AllArgsConstructor
     public static class RegisterAccountResponse {
-        private final String accountId;
+        private final Long accountId;
     }
 
     @Getter

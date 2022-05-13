@@ -17,10 +17,10 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     @Transactional
-    public String registerAccount(AccountCommand.RegisterAccountRequest request) {
-        userReader.findUserById(request.getUserId());
+    public Long registerAccount(AccountCommand.RegisterAccountRequest request) {
+        var user = userReader.findUserById(request.getUserId());
+        var account = accountStore.registerAccount(request.toEntity(user));
 
-        var account = accountStore.registerAccount(request.toEntity());
         return account.getId();
     }
 

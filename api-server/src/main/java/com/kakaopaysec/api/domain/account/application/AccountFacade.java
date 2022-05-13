@@ -12,7 +12,7 @@ public class AccountFacade {
 
     private final AccountServiceImpl accountService;
 
-    public String registerAccount(AccountCommand.RegisterAccountRequest request) {
+    public Long registerAccount(AccountCommand.RegisterAccountRequest request) {
         return accountService.registerAccount(request);
     }
 
