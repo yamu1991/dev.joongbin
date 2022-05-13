@@ -25,4 +25,9 @@ public class AccountReaderImpl implements AccountReader {
     public List<Account> getAccountList() {
         return accountRepository.findAll();
     }
+
+    @Override
+    public List<Account> getAccountListByUserId(Long userId) {
+        return accountRepository.findAccountByUserIdWithHistory(userId);
+    }
 }

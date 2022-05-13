@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -50,5 +51,23 @@ public class AccountServiceImpl implements AccountService {
         var accountHistory = accountHistoryReader.getAccountHistoryList();
 
         return AccountInfo.HistoryInfo.of(accountHistory);
+    }
+
+    @Override
+    public List<AccountInfo.MyAccountInfo> getMyAccountList(Long userId) {
+        userReader.findUserById(userId);
+        var accountList = accountReader.getAccountListByUserId(userId);
+        List<AccountInfo.MyAccountInfo> myAccountInfoList = new ArrayList<>();
+
+        accountList.forEach(account -> {
+            Long balance = account.getAccountHistoryList().stream().map(it -> (it.getIsDeposit()) ? it.getPrice() : -it.getPrice()).mapToLong(Long::valueOf).sum();
+            System.out.println(balance);
+            var myAccountInfo = AccountInfo.MyAccountInfo.builder()
+                    .accountId(account.getId()).balance(balance).build();
+
+            myAccountInfoList.add(myAccountInfo);
+        });
+
+        return myAccountInfoList;
     }
 }

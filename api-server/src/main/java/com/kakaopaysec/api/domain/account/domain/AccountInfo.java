@@ -45,4 +45,11 @@ public class AccountInfo {
                             .build());
         }
     }
+
+    @Getter
+    @Builder
+    public static class MyAccountInfo {
+        private Long accountId;
+        private Long balance;
+    }
 }

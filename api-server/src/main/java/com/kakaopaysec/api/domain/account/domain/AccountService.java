@@ -12,4 +12,6 @@ AccountService {
     Long registerAccountHistory(AccountCommand.RegisterAccountHistoryRequest request);
 
     List<AccountInfo.HistoryInfo> getAccountHistoryList();
+
+    List<AccountInfo.MyAccountInfo> getMyAccountList(Long userId);
 }

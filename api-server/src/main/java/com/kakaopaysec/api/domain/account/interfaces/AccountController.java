@@ -1,6 +1,7 @@
 package com.kakaopaysec.api.domain.account.interfaces;
 
 import com.kakaopaysec.api.domain.account.application.AccountFacade;
+import com.kakaopaysec.api.domain.account.domain.AccountService;
 import com.kakaopaysec.api.domain.account.interfaces.dto.AccountDto;
 import com.kakaopaysec.api.global.response.http.CommonResponse;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import javax.validation.Valid;
 public class AccountController {
 
     private final AccountFacade accountFacade;
+    private final AccountService accountService;
 
     @PostMapping
     public CommonResponse registerAccount(
