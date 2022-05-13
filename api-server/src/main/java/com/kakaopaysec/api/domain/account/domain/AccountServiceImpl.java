@@ -42,7 +42,7 @@ public class AccountServiceImpl implements AccountService {
         var accountHistory =
                 accountHistoryStore.registerAccountHistory(request.toEntity(account));
 
-        return accountHistory.getAccountId();
+        return accountHistory.getId();
     }
 
     @Override
