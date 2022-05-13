@@ -24,10 +24,19 @@ public class AccountController {
         return CommonResponse.success(response);
     }
 
-    @GetMapping
+    @GetMapping("list")
     public CommonResponse getAccountList() {
         var accountList = accountFacade.getAccountList();
         var response = AccountDto.Main.of(accountList);
+        return CommonResponse.success(response);
+    }
+
+    @PostMapping("history")
+    public CommonResponse getAccountHistoryList(
+            @RequestBody @Valid AccountDto.RegisterAccountHistoryRequest request
+    ) {
+        var accountHistoryId = accountFacade.registerAccountHistory(request.toCommand());
+        var response = new AccountDto.RegisterAccountHistoryResponse(accountHistoryId);
         return CommonResponse.success(response);
     }
 }
