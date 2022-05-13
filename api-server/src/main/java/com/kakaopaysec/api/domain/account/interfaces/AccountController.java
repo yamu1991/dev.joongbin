@@ -32,7 +32,7 @@ public class AccountController {
     }
 
     @PostMapping("history")
-    public CommonResponse getAccountHistoryList(
+    public CommonResponse registerAccountHisotry(
             @RequestBody @Valid AccountDto.RegisterAccountHistoryRequest request
     ) {
         var accountHistoryId = accountFacade.registerAccountHistory(request.toCommand());
