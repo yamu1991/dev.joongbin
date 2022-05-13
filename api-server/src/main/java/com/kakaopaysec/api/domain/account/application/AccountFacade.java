@@ -27,4 +27,8 @@ public class AccountFacade {
     public List<AccountInfo.HistoryInfo> getAccountHistoryList() {
         return accountService.getAccountHistoryList();
     }
+
+    public List<AccountInfo.MyAccountInfo> getMyAccountList(Long userId) {
+        return accountService.getMyAccountList(userId);
+    }
 }
