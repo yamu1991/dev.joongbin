@@ -2,7 +2,8 @@ package com.kakaopaysec.api.domain.account.domain;
 
 import java.util.List;
 
-public interface AccountService {
+public interface
+AccountService {
 
     Long registerAccount(AccountCommand.RegisterAccountRequest request);
 
@@ -10,5 +11,5 @@ public interface AccountService {
 
     Long registerAccountHistory(AccountCommand.RegisterAccountHistoryRequest request);
 
-    List<AccountInfo.HistoryInfo> getAccountHisotryList();
+    List<AccountInfo.HistoryInfo> getAccountHistoryList();
 }

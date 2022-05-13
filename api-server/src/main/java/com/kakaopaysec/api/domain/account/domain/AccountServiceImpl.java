@@ -31,7 +31,9 @@ public class AccountServiceImpl implements AccountService {
     @Override
     @Transactional(readOnly = true)
     public List<AccountInfo.Main> getAccountList() {
-        return AccountInfo.Main.of(accountReader.getAccountList());
+        var account = accountReader.getAccountList();
+
+        return AccountInfo.Main.of(account);
     }
 
     @Override
@@ -44,7 +46,9 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public List<AccountInfo.HistoryInfo> getAccountHisotryList() {
-        return null;
+    public List<AccountInfo.HistoryInfo> getAccountHistoryList() {
+        var accountHistory = accountHistoryReader.getAccountHistoryList();
+
+        return AccountInfo.HistoryInfo.of(accountHistory);
     }
 }

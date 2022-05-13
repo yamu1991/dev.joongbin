@@ -30,7 +30,7 @@ public class AccountInfo {
     public static class HistoryInfo {
         private Long accountHistoryId;
         private Long accountId;
-        private boolean isDeposit;
+        private Boolean isDeposit;
         private Long price;
         private Date transactionDate;
 
@@ -39,7 +39,7 @@ public class AccountInfo {
                     accountHistory -> HistoryInfo.builder()
                             .accountHistoryId(accountHistory.getId())
                             .accountId(accountHistory.getAccountId())
-                            .isDeposit(accountHistory.isDeposit())
+                            .isDeposit(accountHistory.getIsDeposit())
                             .price(accountHistory.getPrice())
                             .transactionDate(accountHistory.getTransactionDate())
                             .build());
