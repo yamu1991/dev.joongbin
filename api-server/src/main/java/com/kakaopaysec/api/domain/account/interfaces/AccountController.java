@@ -48,4 +48,13 @@ public class AccountController {
         var response = AccountDto.AccountHistoryResponse.of(accountList);
         return CommonResponse.success(response);
     }
+
+    @GetMapping("my/{userId}")
+    public CommonResponse getMyAccountList(
+            @Valid @PathVariable("userId") Long userId
+    ) {
+        var myAccountList = accountFacade.getMyAccountList(userId);
+        var response = AccountDto.MyAccountResponse.of(myAccountList);
+        return CommonResponse.success(response);
+    }
 }

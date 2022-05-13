@@ -88,4 +88,18 @@ public class AccountDto {
         }
     }
 
+    @Getter
+    @Builder
+    public static class MyAccountResponse {
+        private Long accountId;
+        private Long balance;
+
+        public static List<MyAccountResponse> of(List<AccountInfo.MyAccountInfo> myAccountInfoList) {
+            return CustomMapper.listMapper(myAccountInfoList, myAccount ->
+                    MyAccountResponse.builder()
+                            .accountId(myAccount.getAccountId())
+                            .balance(myAccount.getBalance())
+                            .build());
+        }
+    }
 }
