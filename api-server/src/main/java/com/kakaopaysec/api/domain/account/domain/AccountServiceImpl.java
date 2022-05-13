@@ -60,8 +60,8 @@ public class AccountServiceImpl implements AccountService {
         List<AccountInfo.MyAccountInfo> myAccountInfoList = new ArrayList<>();
 
         accountList.forEach(account -> {
-            Long balance = account.getAccountHistoryList().stream().map(it -> (it.getIsDeposit()) ? it.getPrice() : -it.getPrice()).mapToLong(Long::valueOf).sum();
-            System.out.println(balance);
+            // isDeposite가 true 라면 입금액 그대로 더해주고 false 라면 -입금맥을 더해준다
+            Long balance = account.getAccountHistoryList().stream().map(it -> it.getIsDeposit() ? it.getPrice() : -it.getPrice()).mapToLong(Long::valueOf).sum();
             var myAccountInfo = AccountInfo.MyAccountInfo.builder()
                     .accountId(account.getId()).balance(balance).build();
 
