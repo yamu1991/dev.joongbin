@@ -6,7 +6,6 @@ import javax.persistence.Converter;
 @Converter
 public class BooleanConverter implements AttributeConverter<Boolean, String> {
 
-
     @Override
     public String convertToDatabaseColumn(Boolean attribute) {
         return (attribute != null && attribute) ? "Y" : "N";

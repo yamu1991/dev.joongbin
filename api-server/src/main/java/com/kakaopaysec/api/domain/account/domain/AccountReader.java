@@ -4,5 +4,7 @@ import java.util.List;
 
 public interface AccountReader {
 
+    Account findAccountById(Long accountId);
+
     List<Account> getAccountList();
 }

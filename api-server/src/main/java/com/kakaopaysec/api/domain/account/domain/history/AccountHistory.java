@@ -24,7 +24,7 @@ public class AccountHistory {
 
     @Column
     @Convert(converter = BooleanConverter.class)
-    private boolean isDeposit;
+    private Boolean isDeposit;
 
     @Column
     private Long price;
