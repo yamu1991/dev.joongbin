@@ -2,9 +2,11 @@ package com.kakaopaysec.api.domain.account.interfaces.dto;
 
 import com.kakaopaysec.api.domain.account.domain.AccountCommand;
 import com.kakaopaysec.api.domain.account.domain.AccountInfo;
+import com.kakaopaysec.api.global.util.BooleanStaticConverter;
 import com.kakaopaysec.api.global.util.CustomMapper;
 import lombok.*;
 
+import java.util.Date;
 import java.util.List;
 
 public class AccountDto {
@@ -64,4 +66,26 @@ public class AccountDto {
                             .build());
         }
     }
+
+    @Getter
+    @Builder
+    public static class AccountHistoryResponse {
+        private Long accountHistoryId;
+        private Long accountId;
+        private String isDeposit;
+        private Long price;
+        private Date transactionDate;
+
+        public static List<AccountHistoryResponse> of(List<AccountInfo.HistoryInfo> accountHistoryList) {
+            return CustomMapper.listMapper(accountHistoryList,
+                    accountHistory -> AccountHistoryResponse.builder()
+                            .accountHistoryId(accountHistory.getAccountHistoryId())
+                            .accountId(accountHistory.getAccountId())
+                            .isDeposit(BooleanStaticConverter.convertBooleanToString(accountHistory.getIsDeposit()))
+                            .price(accountHistory.getPrice())
+                            .transactionDate(accountHistory.getTransactionDate())
+                            .build());
+        }
+    }
+
 }

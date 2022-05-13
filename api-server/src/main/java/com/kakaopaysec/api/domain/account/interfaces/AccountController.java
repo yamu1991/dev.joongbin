@@ -39,4 +39,11 @@ public class AccountController {
         var response = new AccountDto.RegisterAccountHistoryResponse(accountHistoryId);
         return CommonResponse.success(response);
     }
+
+    @GetMapping("hisotry/list")
+    public CommonResponse getAccountHistoryList() {
+        var accountList = accountFacade.getAccountHistoryList();
+        var response = AccountDto.AccountHistoryResponse.of(accountList);
+        return CommonResponse.success(response);
+    }
 }
