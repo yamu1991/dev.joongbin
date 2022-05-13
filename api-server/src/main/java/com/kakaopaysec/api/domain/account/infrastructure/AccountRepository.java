@@ -11,6 +11,6 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 
     Optional<Account> findAccountById(Long id);
 
-    @Query("SELECT distinct a from tbl_account a LEFT JOIN a.accountHistoryList")
+    @Query("SELECT distinct a from tbl_account a LEFT JOIN a.accountHistoryList WHERE a.userId = :userId")
     List<Account> findAccountByUserIdWithHistory(Long userId);
 }
